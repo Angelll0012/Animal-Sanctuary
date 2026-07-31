@@ -83,7 +83,7 @@ section div {
 
 article {
   background: #f8fafc;
-  border-radius: 16px;
+  border-radius: 100px;
   padding: 0;
   box-shadow: 0 8px 22px rgba(15, 23, 42, 0.05);
 }
@@ -93,6 +93,7 @@ article img {
   height: 180px;
   display: block;
   object-fit: cover;
+ 
 }
 
 article h3 {
