@@ -14,11 +14,9 @@
    -style.css
    -script.js
 3. Open `index.html` in any modern web browser (Chrome, Safari, Edge, Firefox).
-4. Fill out the form fields and click Submit to see your Akan name.
 
 # Contact Information Incase of any challenge: 
 -Reach me through email: angelwangui71@gmail.com
 
-# Github pages link found here : https://angelll0012.github.io/Akan-Generator/ 
-
+# Github pages link found here : https://angelll0012.github.io/Animal-Sanctuary/
 Copyright (c) [2026] [Angel Wangui]
