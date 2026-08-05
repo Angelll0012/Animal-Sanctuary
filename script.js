@@ -20,6 +20,25 @@ document.addEventListener("DOMContentLoaded", () => {
   status.setAttribute("aria-live", "polite");
   donationForm.appendChild(status);
 
+  // Local storage keys
+  const STORAGE_KEY = "donationForm";
+
+  // Restore saved values from localStorage, if present
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const data = JSON.parse(saved);
+      if (typeof data.amount !== "undefined") amountInput.value = data.amount;
+      if (typeof data.message !== "undefined" && messageInput)
+        messageInput.value = data.message;
+    }
+  } catch (e) {
+    // If parsing/storage access fails, don't block functionality
+    // This keeps the script resilient in privacy modes
+    // eslint-disable-next-line no-console
+    console.warn("Could not restore donation form from localStorage", e);
+  }
+
   donationForm.addEventListener("submit", (event) => {
     // Prevent the normal form submission to handle it in JavaScript
     event.preventDefault();
@@ -45,5 +64,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Clear the form inputs so the user sees a fresh form state
     donationForm.reset();
+
+    // Remove saved draft from localStorage on successful submit
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch (e) {
+      // ignore
+    }
   });
+
+  // Save draft to localStorage on input changes
+  const saveDraft = () => {
+    try {
+      const data = {
+        amount: amountInput.value,
+        message: messageInput ? messageInput.value : "",
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch (e) {
+      // ignore storage errors (e.g. quota, private mode)
+    }
+  };
+
+  amountInput.addEventListener("input", saveDraft);
+  if (messageInput) messageInput.addEventListener("input", saveDraft);
 });
