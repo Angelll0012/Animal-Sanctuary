@@ -18,16 +18,19 @@
     </header>
 
     <main>
-        
-            id="message"
-            rows="4"
-            placeholder="Leave a kind note"
-          ></textarea>
+      <section class="donation-box">
+        <h2>Make a Donation</h2>
+        <p>Your support helps us care for rescued animals.</p>
+        <form>
+          <label for="donation-amount">Donation amount</label>
+          <input id="donation-amount" type="number" min="1" step="1" placeholder="$50" required/>
+
+          <label for="message">Message (optional)</label>
+          <textarea id="message" rows="4" placeholder="Leave a kind note"></textarea>
 
           <button type="submit">Donate Now</button>
         </form>
-
-     
+      </section>
     </main>
 
     <footer>
