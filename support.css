@@ -19,10 +19,7 @@ header {
   box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
+
 
 nav a {
   text-decoration: none;
