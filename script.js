@@ -23,6 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Local storage keys
   const STORAGE_KEY = "donationForm";
 
+  // Separate storage key for contact form
+  const CONTACT_STORAGE_KEY = "contactForm";
+
   // Restore saved values from localStorage, if present
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
@@ -88,4 +91,68 @@ document.addEventListener("DOMContentLoaded", () => {
 
   amountInput.addEventListener("input", saveDraft);
   if (messageInput) messageInput.addEventListener("input", saveDraft);
+
+  // --- Contact form handling: save/restore/clear draft ---
+  const contactForm = document.getElementById("contact-form");
+  const contactName = document.getElementById("contact-name");
+  const contactEmail = document.getElementById("contact-email");
+  const contactMessage = document.getElementById("contact-message");
+
+  if (contactForm && contactName && contactEmail && contactMessage) {
+    // Restore contact draft
+    try {
+      const savedContact = localStorage.getItem(CONTACT_STORAGE_KEY);
+      if (savedContact) {
+        const data = JSON.parse(savedContact);
+        if (typeof data.name !== "undefined") contactName.value = data.name;
+        if (typeof data.email !== "undefined") contactEmail.value = data.email;
+        if (typeof data.message !== "undefined")
+          contactMessage.value = data.message;
+      }
+    } catch (e) {
+      // ignore
+    }
+
+    const saveContactDraft = () => {
+      try {
+        const data = {
+          name: contactName.value,
+          email: contactEmail.value,
+          message: contactMessage.value,
+        };
+        localStorage.setItem(CONTACT_STORAGE_KEY, JSON.stringify(data));
+      } catch (e) {
+        // ignore
+      }
+    };
+
+    contactName.addEventListener("input", saveContactDraft);
+    contactEmail.addEventListener("input", saveContactDraft);
+    contactMessage.addEventListener("input", saveContactDraft);
+
+    contactForm.addEventListener("submit", (ev) => {
+      ev.preventDefault();
+      // Very simple validation (browser also enforces required/email types)
+      if (
+        !contactName.value.trim() ||
+        !contactEmail.value.trim() ||
+        !contactMessage.value.trim()
+      ) {
+        // Ideally show an inline error; for now, use alert for visibility
+        alert("Please complete all contact form fields before sending.");
+        return;
+      }
+
+      // Simulate successful send
+      alert("Thank you! Your message has been sent. We'll be in touch.");
+
+      // Clear and remove draft
+      contactForm.reset();
+      try {
+        localStorage.removeItem(CONTACT_STORAGE_KEY);
+      } catch (e) {
+        // ignore
+      }
+    });
+  }
 });

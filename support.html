@@ -1,42 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./support.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./support.css" />
     <title>Support</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1> Angel's Animal Sanctuary</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="support.html">Support</a>
-        </nav>
+      <h1>Angel's Animal Sanctuary</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="support.html">Support</a>
+      </nav>
     </header>
 
     <main>
-        <section class="donation-box">
-            <h2>Make a Donation</h2>
-            <p>Your support helps us care for rescued animals.</p>
-            <form>
-                <label for="donation-amount">Donation amount</label>
-                <input id="donation-amount" type="number" min="1" step="1" placeholder="$50" required>
+      <section class="donation-box">
+        <h2>Make a Donation</h2>
+        <p>Your support helps us care for rescued animals.</p>
+        <form>
+          <label for="donation-amount">Donation amount</label>
+          <input
+            id="donation-amount"
+            type="number"
+            min="1"
+            step="1"
+            placeholder="$50"
+            required
+          />
 
-                <label for="message">Message (optional)</label>
-                <textarea id="message" rows="4" placeholder="Leave a kind note"></textarea>
+          <label for="message">Message (optional)</label>
+          <textarea
+            id="message"
+            rows="4"
+            placeholder="Leave a kind note"
+          ></textarea>
 
-                <button type="submit">Donate Now</button>
-            </form>
-        </section>
+          <button type="submit">Donate Now</button>
+        </form>
+      </section>
+      <section class="contact-box">
+        <h2>Contact Us</h2>
+        <p>If you have questions or want to volunteer, send us a message.</p>
+        <form id="contact-form">
+          <label for="contact-name">Your name</label>
+          <input id="contact-name" type="text" placeholder="Name" required />
+
+          <label for="contact-email">Your email</label>
+          <input
+            id="contact-email"
+            type="email"
+            placeholder="you@example.com"
+            required
+          />
+
+          <label for="contact-message">Message</label>
+          <textarea
+            id="contact-message"
+            rows="5"
+            placeholder="How can we help?"
+            required
+          ></textarea>
+
+          <button type="submit">Send Message</button>
+        </form>
+      </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Angel's Animal Sanctuary</p>
+      <p>&copy; 2026 Angel's Animal Sanctuary</p>
     </footer>
 
-   <script src="./script.js"></script>
-
-</body>
+    <script src="./script.js"></script>
+  </body>
 </html>
